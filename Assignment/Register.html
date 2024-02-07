@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Login page</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel = "stylesheet" type = "text/css" href = "css/externalcss.css">
+  </head>
+  <body>
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+
+    <div class = "formcontainer">
+    <form action = "Login.html">
+        <div>
+            <h1>Register Page</h1>
+            <div class="form-outline mb-4">
+            <input type="text" id="form2Example1" class="form-control" required/>
+            <label class="form-label" for="form2Example1">Username</label>
+            </div>
+        
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+            <input type="password" id="form2Example2" class="form-control" required/>
+            <label class="form-label" for="form2Example2">Password</label>
+            </div>
+        
+            
+        
+            <!-- Submit button -->
+            <input type="submit" class="btn btn-primary btn-block mb-4 inbutton" value = "Sign up">
+        
+            <div class="text-center">
+            <p>Already a member? <a href="Login.html">Login</a></p>
+            </div>
+        </div>
+      </form>
+    </div>
+
+    <script>
+        var form = document.querySelector("form");
+        form.addEventListener("submit", insert)
+        function insert(event)
+        {
+            event.preventDefault();
+            var user = document.getElementById("form2Example1").value;
+            var pass = document.getElementById("form2Example2").value;
+            var obj = new Object();
+            if(JSON.parse(localStorage.getItem("objusername")) == null)
+            {
+              obj.username = user;
+              obj.password = pass;
+              localStorage.setItem("objusername", JSON.stringify(obj.username));
+              localStorage.setItem("objpassword", JSON.stringify(obj.password));
+              
+              alert("Register Successfully");
+            }
+            else
+            {
+              if(user == JSON.parse(localStorage.getItem("objusername")))
+              {
+                alert("The username already in use, please choose another username!");
+              }
+            }
+        }
+    </script>
+  </body>
+</html>
